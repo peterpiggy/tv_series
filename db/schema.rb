@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20160501062414) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "tv_series", force: :cascade do |t|
     t.string   "name",              default: "", null: false
     t.integer  "season",            default: 1,  null: false
