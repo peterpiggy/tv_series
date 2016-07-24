@@ -1,4 +1,4 @@
 class TvSeries < ActiveRecord::Base
-	validates :name, :season, :episode, presence: true
-	validates :season, :episode, :numericality => { :greater_than => 0 }
+	validates :name, :season, :episode, :interval, presence: true
+	validates :season, :episode, :interval, :numericality => { :greater_than => 0 }
 end
