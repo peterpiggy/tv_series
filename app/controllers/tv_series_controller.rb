@@ -1,5 +1,6 @@
 class TvSeriesController < ApplicationController
   before_action :set_tv_series, only: [:show, :edit, :update, :destroy, :add_date]
+  TORRENT_DOMAIN = 'http://kickasstorrents.website'
 
   def add_date
     
@@ -9,11 +10,13 @@ class TvSeriesController < ApplicationController
   # GET /tv_series.json
   def index
     @tv_series = TvSeries.all
+    @torrentDomain = TORRENT_DOMAIN
   end
 
   # GET /tv_series/1
   # GET /tv_series/1.json
   def show
+    @torrentDomain = TORRENT_DOMAIN
   end
 
   # GET /tv_series/new
