@@ -15,3 +15,7 @@
  *= require bootstrap_and_overrides
  *= require bootstrap-datetimepicker.min
  */
+div.form-group.date_picker.optional.tv_series_next_episode_date > div > span > button {
+	height: 34px;
+	width: 100px;
+}
