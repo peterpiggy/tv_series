@@ -11,7 +11,7 @@
     </tr>
   </thead>
     <tbody>
-    <% if(@movies) %>
+    <% if(@movies.length > 0) %>
       <!-- сортировка с учетом nil - магия, которую я не совсем понял -->
       <% @sorted_movies = @movies.sort_by {|movies| [movies.release_date ? 0 : 1, movies.release_date || 0]} %> 
       <% @counter = 1 %>
@@ -62,7 +62,7 @@
     </tr>
   </thead>
   <tbody>
-    <% if(@tv_series) %>
+    <% if(@tv_series.length > 0) %>
       <!-- сортировка с учетом nil - магия, которую я не совсем понял -->
       <% @sorted_tv_series = @tv_series.sort_by {|tv_series| [tv_series.next_episode_date ? 0 : 1, tv_series.next_episode_date || 0]} %> 
       <% @counter = 1 %>
