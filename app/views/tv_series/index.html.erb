@@ -27,18 +27,18 @@
             <td><%= link_to movie.name, movie %></td>
             <% @name = movie.name.gsub(' ', '%20') %>
             <% if (movie.release_date) %>
-              <tr><td><%= link_to movie.release_date.strftime('%d.%m.%Y'), 'https://en.wikipedia.org/wiki/' + @name, target: '_blank' %>. <%= link_to 'Дата неверна?', edit_movie_path(movie) %></td></tr>
+              <td><%= link_to movie.release_date.strftime('%d.%m.%Y'), 'https://en.wikipedia.org/wiki/' + @name, target: '_blank' %>. <%= link_to 'Дата неверна?', edit_movie_path(movie) %></td> 
             <% else %>
-              <tr><td>Дата выхода серии <%= link_to 'неизвестна', 'https://en.wikipedia.org/wiki/' + @name, target: '_blank' %>. <%= link_to 'Указать дату', edit_movie_path(movie) %></td></tr>
+              <td>Дата выхода серии <%= link_to 'неизвестна', 'https://en.wikipedia.org/wiki/' + @name, target: '_blank' %>. <%= link_to 'Указать дату', edit_movie_path(movie) %></td> 
             <% end %>
             <% if(movie.release_date && movie.release_date < Time.now) %>
-              <tr><td><%= link_to 'Субтитры', 'http://www.opensubtitles.org/en/search2/sublanguageid-eng/moviename-' + @name, target: '_blank' %></td></tr>
-              <tr><td><%= link_to 'Torrent', @torrentDomain + @name + '%20720p', target: '_blank' %></td></tr>
+              <td><%= link_to 'Субтитры', 'http://www.opensubtitles.org/en/search2/sublanguageid-eng/moviename-' + @name, target: '_blank' %></td>
+              <td><%= link_to 'Torrent', @torrentDomain + @name + '%20720p', target: '_blank' %></td>
             <% else %>
               <td colspan="2">Серия ещё не вышла</td>
             <% end %>
-            <tr><td><%= link_to 'Изменить', edit_movie_path(movie) %></td></tr>
-            <tr><td><%= link_to 'Я посмотрел фильм', movie, method: :delete, data: {confirm: 'Точно посмотрел? Фильм будет удален из списка'} %></td></tr>
+            <td><%= link_to 'Изменить', edit_movie_path(movie) %></td>
+            <td><%= link_to 'Я посмотрел фильм', movie, method: :delete, data: {confirm: 'Точно посмотрел? Фильм будет удален из списка'} %></td>
           </tr>
         <% @counter = @counter + 1 %>
       <% end %>
