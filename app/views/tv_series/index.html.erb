@@ -86,7 +86,6 @@
           <% if(@movie.release_date && @movie.release_date < Time.now) %>
             <tr><td><%= link_to 'Субтитры', 'http://www.opensubtitles.org/en/search2/sublanguageid-eng/moviename-' + @name, target: '_blank' %></td></tr>
             <tr><td><%= link_to 'Torrent', @torrentDomain + @name + '%20720p', target: '_blank' %></td></tr>
-          <% end %>
           <% else %>
             <td colspan="2">Серия ещё не вышла</td>
           <% end %>
