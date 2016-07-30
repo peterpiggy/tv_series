@@ -4,7 +4,7 @@
 <tr><td>Ты будешь смотреть <%= @tv_series.episode %> серию <%= @tv_series.season %> сезона</td></tr>
 <% @name = @tv_series.name.gsub(' ', '%20') %>
 <% if (@tv_series.next_episode_date) %>
-	<tr><td><%= link_to @tv_series.next_episode_date.strftime('%d.%m.%Y'), 'https://en.wikipedia.org/wiki/' + @name, target: '_blank' %><br><%= link_to 'Дата неверна?', edit_tv_series_path(@tv_series) %></td></tr>
+	<tr><td><%= link_to @tv_series.next_episode_date.strftime('%d.%m.%Y'), 'https://en.wikipedia.org/wiki/' + @name, target: '_blank' %>. <%= link_to 'Дата неверна?', edit_tv_series_path(@tv_series) %></td></tr>
 <% else %>
 	<tr><td>Дата выхода серии <%= link_to 'неизвестна', 'https://en.wikipedia.org/wiki/' + @name, target: '_blank' %>. <%= link_to 'Указать дату', edit_tv_series_path(@tv_series) %></td></tr>
 <% end %>
