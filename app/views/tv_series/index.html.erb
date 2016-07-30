@@ -29,7 +29,7 @@
             <% if (movie.release_date) %>
               <td><%= link_to movie.release_date.strftime('%d.%m.%Y'), 'https://en.wikipedia.org/wiki/' + @name, target: '_blank' %><br><%= link_to 'Дата неверна?', edit_movie_path(movie) %></td> 
             <% else %>
-              <td>Дата выхода серии <%= link_to 'неизвестна', 'https://en.wikipedia.org/wiki/' + @name, target: '_blank' %><br><%= link_to 'Указать дату', edit_movie_path(movie) %></td> 
+              <td>Дата выхода фильма <%= link_to 'неизвестна', 'https://en.wikipedia.org/wiki/' + @name, target: '_blank' %><br><%= link_to 'Указать дату', edit_movie_path(movie) %></td> 
             <% end %>
             <% if(movie.release_date && movie.release_date < Time.now) %>
               <td><%= link_to 'Субтитры', 'http://www.opensubtitles.org/en/search2/sublanguageid-eng/moviename-' + @name, target: '_blank' %></td>
