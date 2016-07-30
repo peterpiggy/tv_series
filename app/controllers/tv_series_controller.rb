@@ -1,6 +1,5 @@
 class TvSeriesController < ApplicationController
   before_action :set_tv_series, only: [:show, :edit, :update, :destroy, :add_date]
-  TORRENT_DOMAIN = 'http://extratorrent.cc/search/?search='
 
   def add_date
     
