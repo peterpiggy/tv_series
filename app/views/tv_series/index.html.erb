@@ -1,17 +1,17 @@
 <h1>Список твоих сериалов и фильмов</h1>
 
 <h2>Фильмы, которые ты хотел посмотреть</h2>
-<table>
-  <thead>
-    <tr>
-      <th>#</th>
-      <th>Фильм</th>
-      <th>Дата выхода</th>
-      <th colspan="4"></th>
-    </tr>
-  </thead>
-    <tbody>
-    <% if(@movies.length > 0) %>
+<% if(@movies.length > 0) %>
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Фильм</th>
+        <th>Дата выхода</th>
+        <th colspan="4"></th>
+      </tr>
+    </thead>
+      <tbody>
       <!-- сортировка с учетом nil - магия, которую я не совсем понял -->
       <% @sorted_movies = @movies.sort_by {|movies| [movies.release_date ? 0 : 1, movies.release_date || 0]} %> 
       <% @counter = 1 %>
@@ -42,27 +42,28 @@
           </tr>
         <% @counter = @counter + 1 %>
       <% end %>
-    <% else %>
-      <p>Ты не добавил еще ни одного фильма</p>
-    <% end %>
-  </tbody>
-</table><br>
+    </tbody>
+  </table>
+<% else %>
+  <p>Ты не добавил еще ни одного фильма</p>
+<% end %>
+<br>
 <%= link_to 'Добавить фильм', new_movie_path %>
 
 <h2>Твои сериалы</h2>
-<table class="table">
-  <thead>
-    <tr>
-      <th>#</th>
-      <th>Сериал</th>
-      <th>Сезон</th>
-      <th>Серия</th>
-      <th>Дата выхода серии</th>
-      <th colspan="5"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% if(@tv_series.length > 0) %>
+<% if(@tv_series.length > 0) %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Сериал</th>
+        <th>Сезон</th>
+        <th>Серия</th>
+        <th>Дата выхода серии</th>
+        <th colspan="5"></th>
+      </tr>
+    </thead>
+    <tbody>
       <!-- сортировка с учетом nil - магия, которую я не совсем понял -->
       <% @sorted_tv_series = @tv_series.sort_by {|tv_series| [tv_series.next_episode_date ? 0 : 1, tv_series.next_episode_date || 0]} %> 
       <% @counter = 1 %>
@@ -99,9 +100,10 @@
           </tr>
         <% @counter = @counter + 1 %>
       <% end %>
-    <% else %>
-      <p>Ты не добавил еще ни одного сериала</p>
-    <% end %>
-  </tbody>
-</table><br>
+    </tbody>
+  </table>
+<% else %>
+  <p>Ты не добавил еще ни одного сериала</p>
+<% end %>
+<br>
 <%= link_to 'Добавить сериал', new_tv_series_path %>
