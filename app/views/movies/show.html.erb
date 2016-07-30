@@ -9,7 +9,7 @@
 <% end %>
 <% if(@movie.release_date && @movie.release_date < Time.now) %>
 	<tr><td><%= link_to 'Найти субтитры', 'http://www.opensubtitles.org/en/search2/sublanguageid-eng/moviename-' + @name, target: '_blank' %></td></tr>
-	<tr><td><%= link_to 'Найти torrent', @torrentDomain + @name + '%20720p', target: '_blank' %></td></tr>
+	<tr><td><%= link_to 'Найти torrent', @torrentDomain + @name, target: '_blank' %></td></tr>
 <% end %>
 <tr><td><%= link_to 'Изменить фильм', edit_movie_path(@movie) %></td></tr>
 <tr><td><%= link_to 'Я посмотрел фильм', @movie, method: :delete, data: {confirm: 'Точно посмотрел? Фильм будет удален из списка'} %></td></tr>
