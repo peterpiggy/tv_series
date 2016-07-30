@@ -10,6 +10,7 @@ class TvSeriesController < ApplicationController
   # GET /tv_series.json
   def index
     @tv_series = TvSeries.all
+    @movies = Movie.all
     @torrentDomain = TORRENT_DOMAIN
   end
 

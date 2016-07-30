@@ -1,19 +1,17 @@
-<h1>Список твоих сериалов</h1>
+<h1>Список твоих сериалов и фильмов</h1>
 
-<table class="table">
+<h2>Фильмы, которые ты хотел посмотреть</h2>
+<table>
   <thead>
     <tr>
       <th>#</th>
-      <th>Сериал</th>
-      <th>Сезон</th>
-      <th>Серия</th>
-      <th>Дата выхода серии</th>
-      <th colspan="5"></th>
+      <th>Фильм</th>
+      <th>Дата выхода</th>
+      <th colspan="4"></th>
     </tr>
   </thead>
-
   <tbody>
-    <!-- сортировка с учетом nil - магия, которую я не совсем понял -->
+        <!-- сортировка с учетом nil - магия, которую я не совсем понял -->
     <% @sorted_tv_series = @tv_series.sort_by {|tv_series| [tv_series.next_episode_date ? 0 : 1, tv_series.next_episode_date || 0]} %> 
     <% @counter = 1 %>
     <% @sorted_tv_series.each do |tv_series| %>
@@ -46,6 +44,54 @@
           <% end %>
           <td><%= link_to 'Изменить', edit_tv_series_path(tv_series) %></td>
           <td><%= link_to 'Удалить', tv_series, method: :delete, data: {confirm: 'Надоело?'} %></td>
+        </tr>
+      <% @counter = @counter + 1 %>
+    <% end %>
+  </tbody>
+</table>
+
+<h2>Твои сериалы</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Сериал</th>
+      <th>Сезон</th>
+      <th>Серия</th>
+      <th>Дата выхода серии</th>
+      <th colspan="5"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <!-- сортировка с учетом nil - магия, которую я не совсем понял -->
+    <% @sorted_movies = @movies.sort_by {|movies| [movies.release_date ? 0 : 1, movies.release_date || 0]} %> 
+    <% @counter = 1 %>
+    <% @sorted_movies.each do |movie| %>
+      <% if movie.release_date && movie.release_date < Date.today %>
+        <tr class="time-to-watch">
+      <% elsif movie.release_date && movie.release_date == Date.today %>
+        <tr class="time-to-watch-on-tv">
+      <% else %>
+        <tr>
+      <% end %>
+          <td><%= @counter %></td>
+          <td><%= link_to movie.name, movie %></td>
+          <% @name = movie.name.gsub(' ', '%20') %>
+          <% if (@movie.release_date) %>
+            <tr><td><%= link_to @movie.release_date.strftime('%d.%m.%Y'), 'https://en.wikipedia.org/wiki/' + @name, target: '_blank' %>. <%= link_to 'Дата неверна?', edit_movie_path(@movie) %></td></tr>
+          <% else %>
+            <tr><td>Дата выхода серии <%= link_to 'неизвестна', 'https://en.wikipedia.org/wiki/' + @name, target: '_blank' %>. <%= link_to 'Указать дату', edit_movie_path(@movie) %></td></tr>
+          <% end %>
+          <% if(@movie.release_date && @movie.release_date < Time.now) %>
+            <tr><td><%= link_to 'Субтитры', 'http://www.opensubtitles.org/en/search2/sublanguageid-eng/moviename-' + @name, target: '_blank' %></td></tr>
+            <tr><td><%= link_to 'Torrent', @torrentDomain + @name + '%20720p', target: '_blank' %></td></tr>
+          <% end %>
+          <% else %>
+            <td colspan="2">Серия ещё не вышла</td>
+          <% end %>
+          <tr><td><%= link_to 'Изменить', edit_movie_path(@movie) %></td></tr>
+          <tr><td><%= link_to 'Я посмотрел фильм', @movie, method: :delete, data: {confirm: 'Точно посмотрел? Фильм будет удален из списка'} %></td></tr>
         </tr>
       <% @counter = @counter + 1 %>
     <% end %>
