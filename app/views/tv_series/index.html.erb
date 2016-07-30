@@ -35,7 +35,7 @@
               <td><%= link_to 'Субтитры', 'http://www.opensubtitles.org/en/search2/sublanguageid-eng/moviename-' + @name, target: '_blank' %></td>
               <td><%= link_to 'Torrent', @torrentDomain + @name + '%20720p', target: '_blank' %></td>
             <% else %>
-              <td colspan="2">Серия ещё не вышла</td>
+              <td colspan="2">Фильм ещё не вышел</td>
             <% end %>
             <td><%= link_to 'Изменить', edit_movie_path(movie) %></td>
             <td><%= link_to 'Я посмотрел фильм', movie, method: :delete, data: {confirm: 'Точно посмотрел? Фильм будет удален из списка'} %></td>
@@ -45,7 +45,7 @@
     </tbody>
   </table>
 <% else %>
-  <p>Ты не добавил еще ни одного фильма</p>
+  <p>Ты не добавил ещё ни одного фильма</p>
 <% end %>
 <br>
 <%= link_to 'Добавить фильм', new_movie_path %>
@@ -103,7 +103,7 @@
     </tbody>
   </table>
 <% else %>
-  <p>Ты не добавил еще ни одного сериала</p>
+  <p>Ты не добавил ещё ни одного сериала</p>
 <% end %>
 <br>
 <%= link_to 'Добавить сериал', new_tv_series_path %>
