@@ -1,4 +1,8 @@
 source 'https://rubygems.org'
+
+ruby '2.2.4'
+gem 'rails_12factor'
+
 gem "therubyracer"
 gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
 gem "twitter-bootstrap-rails"
