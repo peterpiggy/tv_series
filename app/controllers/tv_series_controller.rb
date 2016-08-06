@@ -50,7 +50,7 @@ class TvSeriesController < ApplicationController
     respond_to do |format|
       if @tv_series.update(tv_series_params)
         format.html { redirect_to @tv_series, notice: 'Tv series was successfully updated.' }
-        format.json { render :index, status: :ok, location: @tv_series }
+        format.json { render :index, status: :ok, location: @tv_series_index_path }
       else
         format.html { render :edit }
         format.json { render json: @tv_series.errors, status: :unprocessable_entity }
