@@ -1,12 +1,6 @@
 class MoviesController < ApplicationController
   before_action :set_movie, only: [:show, :edit, :update, :destroy]
 
-  # GET /movies/1
-  # GET /movies/1.json
-  def show
-    @torrentDomain = TORRENT_DOMAIN
-  end
-
   # GET /movies/new
   def new
     @movie = Movie.new

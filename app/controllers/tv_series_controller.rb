@@ -13,12 +13,6 @@ class TvSeriesController < ApplicationController
     @torrentDomain = TORRENT_DOMAIN
   end
 
-  # GET /tv_series/1
-  # GET /tv_series/1.json
-  def show
-    @torrentDomain = TORRENT_DOMAIN
-  end
-
   # GET /tv_series/new
   def new
     @tv_series = TvSeries.new
