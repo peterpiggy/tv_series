@@ -30,7 +30,7 @@ class TvSeriesController < ApplicationController
     respond_to do |format|
       if @tv_series.save
         format.html { redirect_to @tv_series, notice: 'Tv series was successfully created.' }
-        format.json { render :show, status: :created, location: @tv_series }
+        format.json { render :index, status: :created, location: root_path }
       else
         format.html { render :new }
         format.json { render json: @tv_series.errors, status: :unprocessable_entity }
