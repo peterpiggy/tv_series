@@ -29,7 +29,7 @@ class TvSeriesController < ApplicationController
 
     respond_to do |format|
       if @tv_series.save
-        format.html { redirect_to @tv_series, notice: 'Tv series was successfully created.' }
+        format.html { redirect_to root_path, notice: 'Tv series was successfully created.' }
         format.json { render :index, status: :created, location: root_path }
       else
         format.html { render :new }
