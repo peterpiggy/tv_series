@@ -79,7 +79,7 @@
             <td><%= @counter %></td>
             <% @name = tv_series.name.gsub(' ', '%20') %>
             <% @wikiLink = 'https://en.wikipedia.org/wiki/' + @name %>
-            <td><%= link_to tv_series.name, @wikiLink, target: '_blank' %><%= image_tag('likes.png', :alt => 'likes') %>2<%= image_tag('likes.png', :alt => 'dislikes')%>1</td>
+            <td><%= link_to tv_series.name, @wikiLink, target: '_blank' %><%= image_tag('likes.png', :alt => 'likes', :class => 'likes_icon like') %>2<%= image_tag('likes.png', :alt => 'dislikes', :class => 'likes_icon dislike')%>1</td>
             <td><%= tv_series.season %></td>
             <td><%= tv_series.episode %></td>
             <% if (tv_series.next_episode_date) %>
