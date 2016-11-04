@@ -82,8 +82,8 @@
             <td>
               <%= link_to tv_series.name, @wikiLink, target: '_blank' %><br>
               <div class="likes" style="font-size: 0.75em; color: gray;">
-                <%= link_to 'Понравилось: ' + tv_series.likes.to_s, tv_series: {likes: tv_series.likes + 1}, method: :patch, data: {confirm: 'Понравилась серия?'} %><br>
-                <%= link_to 'Не понравилось: ' + tv_series.dislikes.to_s, tv_series: {dislikes: tv_series.dislikes + 1}, method: :patch, data: {confirm: 'Не понравилась серия?'} %>
+                <%= link_to 'Понравилось: ' + tv_series.likes.to_s, tv_series_path(tv_series, tv_series: {likes: tv_series.likes + 1}), method: :patch, data: {confirm: 'Понравилась серия?'} %><br>
+                <%= link_to 'Не понравилось: ' + tv_series.dislikes.to_s, tv_series_path(tv_series, tv_series: {dislikes: tv_series.dislikes + 1}), method: :patch, data: {confirm: 'Не понравилась серия?'} %>
               </div>
             </td>
             <td><%= tv_series.season %></td>
