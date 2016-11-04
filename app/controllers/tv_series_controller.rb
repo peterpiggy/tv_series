@@ -2,7 +2,7 @@ class TvSeriesController < ApplicationController
   before_action :set_tv_series, only: [:show, :edit, :update, :destroy, :add_date]
 
   def add_date
-    
+
   end
 
   # GET /tv_series
@@ -70,6 +70,6 @@ class TvSeriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tv_series_params
-      params.fetch(:tv_series, {}).permit(:name, :season, :episode, :next_episode_date, :interval)
+      params.fetch(:tv_series, {}).permit(:name, :season, :episode, :next_episode_date, :interval, :likes, :dislikes)
     end
 end

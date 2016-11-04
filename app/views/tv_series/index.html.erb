@@ -79,7 +79,10 @@
             <td><%= @counter %></td>
             <% @name = tv_series.name.gsub(' ', '%20') %>
             <% @wikiLink = 'https://en.wikipedia.org/wiki/' + @name %>
-            <td><%= link_to tv_series.name, @wikiLink, target: '_blank' %></td>
+            <td>
+              <%= link_to tv_series.name, @wikiLink, target: '_blank' %>
+              <%= link_to 'Понравилось: ' + tv_series.likes, tv_series: {likes: tv_series.likes + 1}, method: :patch, data: {confirm: 'Понравилась серия?'} %> <%= link_to 'Не понравилось: ' + tv_series.dislikes, tv_series: {dislikes: tv_series.dislikes + 1}, method: :patch, data: {confirm: 'Не понравилась серия?'} %>
+            </td>
             <td><%= tv_series.season %></td>
             <td><%= tv_series.episode %></td>
             <% if (tv_series.next_episode_date) %>
@@ -93,7 +96,7 @@
               <td><%= link_to 'Субтитры', 'http://www.opensubtitles.org/en/search2/sublanguageid-eng/moviename-' + @name + '+s' + @season + 'e' + @episode, target: '_blank' %></td>
               <td><%= link_to 'Torrent', @torrentDomain + @name + '%20s' + @season + 'e' + @episode, target: '_blank' %></td>
               <td><%= link_to 'Я посмотрел серию', tv_series_path(tv_series, tv_series: {episode: tv_series.episode + 1, next_episode_date: tv_series.next_episode_date + tv_series.interval.days}), method: :patch, data: {confirm: 'Точно посмотрел?'} %><br>
-              <%= link_to 'Я посмотрел сезон', tv_series_path(tv_series, tv_series: {season: tv_series.season + 1, episode: 1, next_episode_date: nil}), method: :patch, data: {confirm: 'Целый сезон?'} %></td>
+              <%= link_to 'Я посмотрел сезон', tv_series_path(tv_series, tv_series: {season: tv_series.season + 1, episode: 1, next_episode_date: nil, likes: 0, dislikes: 0}), method: :patch, data: {confirm: 'Целый сезон?'} %></td>
             <% else %>
               <td colspan="3">Серия ещё не вышла</td>
             <% end %>
