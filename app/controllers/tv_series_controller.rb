@@ -11,6 +11,7 @@ class TvSeriesController < ApplicationController
     @tv_series = TvSeries.all
     @movies = Movie.all
     @torrentDomain = TORRENT_DOMAIN
+    @torrentExt    = TORRENT_EXT
   end
 
   # GET /tv_series/new

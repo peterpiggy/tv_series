@@ -34,7 +34,7 @@
             <% end %>
             <% if(movie.release_date && movie.release_date < Time.now) %>
               <td><%= link_to 'Субтитры', 'http://www.opensubtitles.org/en/search2/sublanguageid-eng/moviename-' + @name, target: '_blank' %></td>
-              <td><%= link_to 'Torrent', @torrentDomain + @name, target: '_blank' %></td>
+              <td><%= link_to 'Torrent', @torrentDomain + @name + @torrentExt, target: '_blank' %></td>
             <% else %>
               <td colspan="2">Фильм ещё не вышел</td>
             <% end %>
@@ -97,7 +97,7 @@
             <% @episode = tv_series.episode < 10 ? '0' + tv_series.episode.to_s : tv_series.episode.to_s %>
             <% if(tv_series.next_episode_date && tv_series.next_episode_date < Time.now) %>
               <td><%= link_to 'Субтитры', 'http://www.opensubtitles.org/en/search2/sublanguageid-eng/moviename-' + @name + '+s' + @season + 'e' + @episode, target: '_blank' %></td>
-              <td><%= link_to 'Torrent', @torrentDomain + @name + '%20s' + @season + 'e' + @episode, target: '_blank' %></td>
+              <td><%= link_to 'Torrent', @torrentDomain + @name + '%20s' + @season + 'e' + @episode + @torrentExt, target: '_blank' %></td>
               <td><%= link_to 'Я посмотрел серию', tv_series_path(tv_series, tv_series: {episode: tv_series.episode + 1, next_episode_date: tv_series.next_episode_date + tv_series.interval.days}), method: :patch, data: {confirm: 'Точно посмотрел?'} %><br>
               <%= link_to 'Я посмотрел сезон', tv_series_path(tv_series, tv_series: {season: tv_series.season + 1, episode: 1, next_episode_date: nil, likes: 0, dislikes: 0}), method: :patch, data: {confirm: 'Целый сезон?'} %></td>
             <% else %>
