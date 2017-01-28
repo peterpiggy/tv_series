@@ -4,7 +4,9 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   #TORRENT_DOMAIN = 'http://extratorrent.cc/search/?search='
-  TORRENT_DOMAIN = 'https://www.torlock.com/all/torrents/'
-  TORRENT_EXT    = '.html'
+  #TORRENT_DOMAIN = 'https://www.torlock.com/all/torrents/'
+  TORRENT_DOMAIN = 'https://thepiratebay.org/search/'
+  #TORRENT_EXT    = '.html'
+  TORRENT_EXT    = ''
   #https://www.torlock.com/all/torrents/vikings-s04e15.html
 end
