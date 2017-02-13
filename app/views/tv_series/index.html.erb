@@ -86,7 +86,7 @@
                   <%= link_to 'Понравилось: ' + tv_series.likes.to_s, tv_series_path(tv_series, tv_series: {likes: tv_series.likes + 1}), method: :patch, data: {confirm: 'Понравилась серия?'} %><br>
                   <%= link_to 'Не понравилось: ' + tv_series.dislikes.to_s, tv_series_path(tv_series, tv_series: {dislikes: tv_series.dislikes + 1}), method: :patch, data: {confirm: 'Не понравилась серия?'} %>
                 <% else %>
-                  <span class="disabled-fake-link">Понравилось: </span>
+                  <span class="disabled-fake-link">Понравилось: </span><br>
                   <span class="disabled-fake-link">Не понравилось: </span>
                 <% end %>
               </div>
