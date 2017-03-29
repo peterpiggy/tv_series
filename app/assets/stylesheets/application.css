@@ -26,10 +26,25 @@ div.form-group.date_picker.optional.movie_release_date > div > span > button
 
 .renewed {
 	font-size: 0.8em;
-	background-color: greenyellow;
 	border-radius: 4px;
 	padding: 3px;
-	border: 1px solid lightseagreen;
+	border-width: 1px;
+	border-style: solid;
+}
+
+.renewed-green {
+	border-color: lightseagreen;
+	background-color: greenyellow;
+}
+
+.renewed-yellow {
+	border-color: yellowgreen;
+	background-color: yellow;
+}
+
+.renewed-red {
+	border-color: darkred;
+	background-color: orangered;
 }
 
 .likes {
