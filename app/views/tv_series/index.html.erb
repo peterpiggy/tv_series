@@ -29,7 +29,8 @@
             <% @wikiLink = 'https://en.wikipedia.org/wiki/' + @name %>
             <td><%= link_to movie.name, @wikiLink, target: '_blank' %></td>
             <% if (movie.release_date) %>
-              <td><%= link_to movie.release_date.strftime('%d.%m.%Y'), @wikiLink, target: '_blank' %><br><%= link_to 'Дата неверна?', edit_movie_path(movie) %></td>
+              <!-- <td><%= link_to movie.release_date.strftime('%d.%m.%Y'), @wikiLink, target: '_blank' %><br><%= link_to 'Дата неверна?', edit_movie_path(movie) %></td> -->
+              <td><%= link_to movie.release_date.strftime('%d.%m.%Y'), @wikiLink, target: '_blank' %></td>
             <% else %>
               <td>Дата выхода фильма <%= link_to 'неизвестна', @wikiLink, target: '_blank' %><br><%= link_to 'Указать дату', edit_movie_path(movie) %></td>
             <% end %>
@@ -120,7 +121,8 @@
             <td><%= tv_series.season %></td>
             <td><%= tv_series.episode %></td>
             <% if (tv_series.next_episode_date) %>
-              <td><%= link_to tv_series.next_episode_date.strftime('%d.%m.%Y'), @wikiLink, target: '_blank' %><br><%= link_to 'Дата неверна?', edit_tv_series_path(tv_series) %></td>
+              <!-- <td><%= link_to tv_series.next_episode_date.strftime('%d.%m.%Y'), @wikiLink, target: '_blank' %><br><%= link_to 'Дата неверна?', edit_tv_series_path(tv_series) %></td> -->
+              <td><%= link_to tv_series.next_episode_date.strftime('%d.%m.%Y'), @wikiLink, target: '_blank' %></td>
               <% @season = tv_series.season < 10 ? '0' + tv_series.season.to_s : tv_series.season.to_s %>
               <% @episode = tv_series.episode < 10 ? '0' + tv_series.episode.to_s : tv_series.episode.to_s %>
               <% if(tv_series.next_episode_date && tv_series.next_episode_date < Time.now) %>
