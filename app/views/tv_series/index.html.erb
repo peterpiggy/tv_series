@@ -86,7 +86,7 @@
               <!-- Знаем, что сериал в данный момент не выходит. И знаем, что сериал был обновлен на новый сезон -->
               <!-- То есть дата следующего эпизода НЕизвестна И дата обновления на новый сезон известна -->
               <% if(!tv_series.next_episode_date && tv_series.renewedDate) %>
-                <%= link_to tv_series.name, @wikiLink, target: '_blank' %> <span class="renewed">Обновлен <%= tv_series.renewedDate %></span><br>
+                <%= link_to tv_series.name, @wikiLink, target: '_blank' %> <span class="renewed">Обновлен <%= tv_series.renewedDate.strftime('%d.%m.%Y') %></span><br>
               <% else %>
                 <%= link_to tv_series.name, @wikiLink, target: '_blank' %><br>
               <% end %>
