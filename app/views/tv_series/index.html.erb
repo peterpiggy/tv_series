@@ -67,7 +67,9 @@
       </tr>
     </thead>
     <tbody>
-      <!-- сортировка с учетом nil - магия, которую я не совсем понял -->
+      <!-- Если дата выхода следующей серии указана - сортируем по ней -->
+      <!-- Если нет, но указана дата обновления сериала - сортируем по ней -->
+      <!-- Если ни одна дата не указана - сортируем по умолчанию -->
       <% @sorted_tv_series = @tv_series.sort_by {|tv_series| [tv_series.next_episode_date ? 0 : 1, tv_series.next_episode_date || 0, tv_series.renewedDate ? 0 : 1, tv_series.renewedDate || 0]} %>
       <% @counter = 1 %>
       <% @sorted_tv_series.each do |tv_series| %>
