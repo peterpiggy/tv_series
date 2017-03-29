@@ -2,17 +2,17 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-  	<%= f.input :name, placeholder: 'Название сериала' %>
-  	<%= f.input :season %>
-  	<%= f.input :episode %>
-  	<%= f.input :next_episode_date, :as => :date_picker, placeholder: 'Выбери дату следующего эпизода, нажав на кнопку справа' %>
+  	<%= f.input :name, placeholder: 'Название сериала', label: 'Название сериала' %>
+  	<%= f.input :season, label: 'Сезон' %>
+  	<%= f.input :episode, label: 'Серия' %>
+  	<%= f.input :next_episode_date, :as => :date_picker, placeholder: 'Выбери дату выхода следующей серии, нажав на кнопку справа', label: 'Дата следующей серии' %>
     <p class="field-tip"><%= 'Если дата совсем неизвестна, оставь поле пустым' %></p>
     <p class="field-tip"><%= 'Если точная дата неизвестна, но ты точно знаешь месяц, укажи первый день месяца, например 01.05.2016' %></p>
     <p class="field-tip"><%= 'Если точная дата неизвестна, но ты точно знаешь время года, укажи первый день времени года, например 01.09.2016' %></p>
     <p class="field-tip"><%= 'Если точная дата неизвестна, но ты точно знаешь год, укажи первый день года, например 01.01.2016' %></p>
-    <%= f.input :interval, placeholder: 'Интервал между сериями в днях' %>
+    <%= f.input :interval, placeholder: 'Интервал между сериями в днях', label: 'Инервал между сериями' %>
     <p class="field-tip"><%= 'Чаще всего это 7 дней. Не знаешь - пиши 7' %></p>
-    <%= f.input :renewedDate, :as => :date_picker, placeholder: 'Выбери дату обновления сериала, нажав на кнопку справа' %>
+    <%= f.input :renewedDate, :as => :date_picker, placeholder: 'Выбери дату обновления сериала, нажав на кнопку справа', label: 'Дата, когда был подтвержден выход нового сезона' %>
   </div>
 
   <div class="form-actions">
