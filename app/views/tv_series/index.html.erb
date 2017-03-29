@@ -100,7 +100,7 @@
 
               <!-- Ставим отметку "Не выходил с" -->
               <% else %>
-                <%= link_to tv_series.name, @wikiLink, target: '_blank' %><br><span class="renewed renewed-red">Не выходил с <%= тут будет дата %></span><br>
+                <%= link_to tv_series.name, @wikiLink, target: '_blank' %><br><span class="renewed renewed-red">Не выходил с [тут будет дата]</span><br>
               <% end %>
               <div class="likes" style="font-size: 0.75em; color: gray;">
                 <% if(tv_series.next_episode_date && tv_series.next_episode_date < Time.now) %>
