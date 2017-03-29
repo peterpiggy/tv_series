@@ -68,7 +68,7 @@
     </thead>
     <tbody>
       <!-- сортировка с учетом nil - магия, которую я не совсем понял -->
-      <% @sorted_tv_series = @tv_series.sort_by {|tv_series| [tv_series.next_episode_date ? 0 : 1, tv_series.next_episode_date || 0]} %>
+      <% @sorted_tv_series = @tv_series.sort_by {|tv_series| [tv_series.next_episode_date ? 0 : 1, tv_series.next_episode_date || 0, tv_series.renewedDate ? 0 : 1, tv_series.renewedDate || 0]} %>
       <% @counter = 1 %>
       <% @sorted_tv_series.each do |tv_series| %>
         <% if tv_series.next_episode_date && tv_series.next_episode_date < Date.today %>
