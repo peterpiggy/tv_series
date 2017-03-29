@@ -30,7 +30,7 @@ class TvSeriesController < ApplicationController
 
     respond_to do |format|
       if @tv_series.save
-        format.html { redirect_to root_path, notice: 'Tv series was successfully created.' }
+        format.html { redirect_to root_path, notice: 'Сериал создан!' }
         format.json { render :index, status: :created, location: root_path }
       else
         format.html { render :new }
@@ -44,7 +44,7 @@ class TvSeriesController < ApplicationController
   def update
     respond_to do |format|
       if @tv_series.update(tv_series_params)
-        format.html { redirect_to root_path, notice: 'Tv series was successfully updated.' }
+        format.html { redirect_to root_path, notice: 'Сериал отредактирован!' }
         format.json { render :index, status: :ok, location: root_path }
       else
         format.html { render :edit }
@@ -58,7 +58,7 @@ class TvSeriesController < ApplicationController
   def destroy
     @tv_series.destroy
     respond_to do |format|
-      format.html { redirect_to tv_series_index_url, notice: 'Tv series was successfully destroyed.' }
+      format.html { redirect_to tv_series_index_url, notice: 'Сериал удален!' }
       format.json { head :no_content }
     end
   end
@@ -71,6 +71,6 @@ class TvSeriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tv_series_params
-      params.fetch(:tv_series, {}).permit(:name, :season, :episode, :next_episode_date, :interval, :likes, :dislikes)
+      params.fetch(:tv_series, {}).permit(:name, :season, :episode, :next_episode_date, :interval, :likes, :dislikes, :renewedDate)
     end
 end

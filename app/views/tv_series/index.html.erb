@@ -1,5 +1,6 @@
 <h1>Список твоих сериалов и фильмов</h1>
 
+<!-- Фильмы -->
 <h2>Фильмы, которые ты хотел посмотреть</h2>
 <% if(@movies.length > 0) %>
   <table class="table">
@@ -51,6 +52,7 @@
 <br>
 <%= link_to 'Добавить фильм', new_movie_path %>
 
+<!-- Сериалы -->
 <h2>Твои сериалы</h2>
 <% if(@tv_series.length > 0) %>
   <table class="table">
@@ -80,7 +82,14 @@
             <% @name = tv_series.name.gsub(' ', '%20') %>
             <% @wikiLink = 'https://en.wikipedia.org/wiki/' + @name %>
             <td>
-              <%= link_to tv_series.name, @wikiLink, target: '_blank' %><br>
+              <!-- Ставим отметку "Обновлен", если -->
+              <!-- Знаем, что сериал в данный момент не выходит. И знаем, что сериал был обновлен на новый сезон -->
+              <!-- То есть дата следующего эпизода НЕизвестна И дата обновления на новый сезон известна -->
+              <% if(!tv_series.next_episode_date && tv_series.renewedDate) %>
+                <%= link_to tv_series.name, @wikiLink, target: '_blank' %> <span class="renewed">Обновлен <%= tv_series.renewedDate %></span><br>
+              <% else %>
+                <%= link_to tv_series.name, @wikiLink, target: '_blank' %><br>
+              <% end %>
               <div class="likes" style="font-size: 0.75em; color: gray;">
                 <% if(tv_series.next_episode_date && tv_series.next_episode_date < Time.now) %>
                   <%= link_to 'Понравилось: ' + tv_series.likes.to_s, tv_series_path(tv_series, tv_series: {likes: tv_series.likes + 1}), method: :patch, data: {confirm: 'Понравилась серия?'} %><br>
@@ -104,7 +113,7 @@
               <td><%= link_to 'Субтитры', 'http://www.opensubtitles.org/en/search2/sublanguageid-eng/moviename-' + @name + '+s' + @season + 'e' + @episode, target: '_blank' %></td>
               <td><%= link_to 'Torrent', @torrentDomain + @name + '%20s' + @season + 'e' + @episode + @torrentExt, target: '_blank' %></td>
               <td><%= link_to 'Я посмотрел серию', tv_series_path(tv_series, tv_series: {episode: tv_series.episode + 1, next_episode_date: tv_series.next_episode_date + tv_series.interval.days}), method: :patch, data: {confirm: 'Точно посмотрел? Сначала поставь оценку!'} %><br>
-              <%= link_to 'Я посмотрел сезон', tv_series_path(tv_series, tv_series: {season: tv_series.season + 1, episode: 1, next_episode_date: nil, likes: 0, dislikes: 0}), method: :patch, data: {confirm: 'Целый сезон?'} %></td>
+              <%= link_to 'Я посмотрел сезон', tv_series_path(tv_series, tv_series: {season: tv_series.season + 1, episode: 1, next_episode_date: nil, likes: 0, dislikes: 0, renewedDate: nil}), method: :patch, data: {confirm: 'Целый сезон?'} %></td>
             <% else %>
               <td colspan="3">Серия ещё не вышла</td>
             <% end %>
