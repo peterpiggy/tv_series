@@ -5,8 +5,8 @@ class ApplicationController < ActionController::Base
 
   #TORRENT_DOMAIN = 'http://extratorrent.cc/search/?search='
   #TORRENT_DOMAIN = 'https://www.torlock.com/all/torrents/'
-  TORRENT_DOMAIN = 'https://thepiratebay.org/search/'
+  #TORRENT_DOMAIN = 'https://thepiratebay.org/search/'
+  TORRENT_DOMAIN = 'https://rarbg.to/torrents.php?search='
   #TORRENT_EXT    = '.html'
   TORRENT_EXT    = ''
-  #https://www.torlock.com/all/torrents/vikings-s04e15.html
 end
